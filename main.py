@@ -73,12 +73,17 @@ print()
 # print('***')
 # print(distMatrix1)
 
+termDocArray = np.asarray(termDoc)
+
 # Plot Cluster Dendrogram
 plt.figure(figsize=(13, 7))
 plt.title("Messages Dendrogram")
-dend = shc.dendrogram(shc.linkage(termDocMatrix, method='ward'))
+dend0 = shc.dendrogram(shc.linkage(distMatrix, method='ward'))
 plt.show()
-
+dend = shc.dendrogram(shc.linkage(termDocMatrix, method='single', metric='euclidean'))
+plt.show()
+dend1 = shc.dendrogram(shc.linkage(termDocMatrix, method='ward', metric='euclidean'))
+plt.show()
 # Hierarchical Clustering
 #termDocArray = np.asarray(termDoc)
 # cluster = AgglomerativeClustering(affinity='euclidean', linkage='ward')
